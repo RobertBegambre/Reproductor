@@ -1,0 +1,7 @@
+{
+  "name": "Reproductor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
