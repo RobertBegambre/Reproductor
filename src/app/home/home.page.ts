@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import{Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,12 @@ export class HomePage {
 
   
 
-  constructor() {}
+  constructor(private router: Router) {
+  
+  }
 
+  close(){
+    console.log("estoy cerrando la intro")
+    this.router.navigateByUrl("/intro")
+  }
 }
