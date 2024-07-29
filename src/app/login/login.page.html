@@ -5,8 +5,18 @@
 </ion-header>
 
 <ion-content>
-  <p class="ion-text-center"> Login a tu app de musica</p>
   <figure>
     <img src="/assets/image/profile.jpg" >
   </figure>
+  <form>
+    <ion-item [formGroup]="loginForm">
+      <ion-label>Email</ion-label>
+      <ion-input ></ion-input>
+        <ion-input label="Email" labelPlacement="floating" placeholder="Correo electronico" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-button
+    type="Submit">
+      login
+    </ion-button>
+  </form>
 </ion-content>
