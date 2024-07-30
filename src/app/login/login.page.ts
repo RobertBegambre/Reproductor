@@ -10,11 +10,19 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   constructor(private formBuilder: FormBuilder) {
     this.loginForm=this.formBuilder.group({
+      
       email: new FormControl(
         "",
         Validators.compose([
           Validators.required,
-          Validators.email
+          Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}')
+        ])
+      ),
+      contraseña: new FormControl(
+        "",
+        Validators.compose([
+          Validators.required,
+
         ])
       )
     })

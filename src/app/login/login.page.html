@@ -8,11 +8,10 @@
   <figure>
     <img src="/assets/image/profile.jpg" >
   </figure>
-  <form>
-    <ion-item [formGroup]="loginForm">
-      <ion-label>Email</ion-label>
-      <ion-input ></ion-input>
+  <form [formGroup]="loginForm" (ngSubmit)="(loginUser(loginForm.value))">
+    <ion-item>
         <ion-input label="Email" labelPlacement="floating" placeholder="Correo electronico" formControlName="email"></ion-input>
+        <ion-input label="contraseña" labelPlacement="floating" placeholder="Contraseña" formControlName="contraseña"></ion-input>
     </ion-item>
     <ion-button
     type="Submit">
