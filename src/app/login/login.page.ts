@@ -12,7 +12,12 @@ export class LoginPage implements OnInit {
     email: [
       {type:"required", message:"El Email es obligatorio"},
       {type:"pattern", message:"El Email es invalido" }
+    ],
+    contrasena: [
+      {type:"required", messages:"El campo es obligatorio"},
+      {type:"pattern", messages:"la contraseña es invalida" }
     ]
+  
   }
   constructor(private formBuilder: FormBuilder) {
     this.loginForm=this.formBuilder.group({
@@ -24,10 +29,11 @@ export class LoginPage implements OnInit {
           Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}')
         ])
       ),
-      contraseña: new FormControl(
+      contrasena: new FormControl(
         "",
         Validators.compose([
           Validators.required,
+          Validators.pattern('[a-zA-Z0-9]+[@.*-_+]')
 
         ])
       )
