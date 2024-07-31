@@ -13,8 +13,20 @@
         <ion-input label="Email" labelPlacement="floating" placeholder="Correo electronico" formControlName="email"></ion-input>
         <ion-input label="contraseña" labelPlacement="floating" placeholder="Contraseña" formControlName="contraseña"></ion-input>
     </ion-item>
+    <div>
+      <ng-container *ngFor="let validation of validation_messages.email">
+
+        <div *ngIf="
+        (loginForm.get('email')?.hasError(validation.type) && 
+        loginForm.get('email')?.dirty)">
+        {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
     <ion-button
-    type="Submit">
+    type="Submit"
+    [disabled]="!loginForm.valid"
+    >
       login
     </ion-button>
   </form>
