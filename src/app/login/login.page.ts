@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
 
 @Component({
@@ -21,7 +21,11 @@ export class LoginPage implements OnInit {
     ]
   
   }
-  constructor(private formBuilder: FormBuilder, private authService: AuthenticateService, private navctrl: NavController) {
+  errorMessage: any;
+  constructor(private formBuilder: FormBuilder, 
+    private authService: AuthenticateService, 
+    private navctrl: NavController,
+  private alertController: AlertController) {
     this.loginForm=this.formBuilder.group({
       
       email: new FormControl(
@@ -48,8 +52,21 @@ export class LoginPage implements OnInit {
   loginUser(dataLogin: any){
     console.log(dataLogin)
     this.authService.loginUser(dataLogin).then(res=>{
+      this.errorMessage="";
       this.navctrl.navigateForward("/home")
+    }).catch(err => {
+      this.errorMessage= err;
+      this.presentAlert(this.errorMessage);
     })
+  }
+  async presentAlert(mss: string) {
+    const alert = await this.alertController.create({
+      header: 'Ops hubo un error',
+      message: mss,
+      buttons: ['OK'],
+    });
+  
+    await alert.present();
   }
 
 }
