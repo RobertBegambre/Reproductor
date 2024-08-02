@@ -49,6 +49,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  gOtoLogin(){
+    this.navctrl.navigateBack("/register")
+  }
+
   loginUser(dataLogin: any){
     console.log(dataLogin)
     this.authService.loginUser(dataLogin).then(res=>{

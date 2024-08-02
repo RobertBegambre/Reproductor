@@ -54,5 +54,12 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
   }
+  goToLogin(){
+    this.navCtrl.navigateBack("/login")
+  }
+
+  register(registerData: any){
+    console.log(registerData);
+  }
 
 }
