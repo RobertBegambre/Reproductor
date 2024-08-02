@@ -11,6 +11,30 @@ import { AuthenticateService } from '../services/authenticate.service';
 })
 export class RegisterPage implements OnInit {
   registerForm: FormGroup;
+  validation_messages ={
+    email: [
+      {type:"required", message:"El Email es obligatorio"},
+      {type:"pattern", message:"El Email es invalido" }
+    ],
+    contraseña: [
+      {type:"required", message:"El campo es obligatorio"},
+      {type:"pattern", message:"la contraseña es invalida" }
+    ],
+
+    name: [
+      {type:"required", message:"El campo es obligatorio"},
+      {type:"pattern", message:"El nombre no es valido" }
+    ],
+    Confirmar_Contraseña: [
+      {type:"required", message:"El campo es obligatorio"},
+      {type:"pattern", message:"la contraseña es invalida" }
+    ],
+    last_name: [
+      {type:"required", message:"El campo es obligatorio"},
+      {type:"pattern", message:"El apellido no es valido" }
+    ],
+  }
+  errorMessage: any;
   constructor(
     private formBuilder: FormBuilder,
     private navCtrl: NavController,
@@ -21,33 +45,40 @@ export class RegisterPage implements OnInit {
       email: new FormControl(
         "",
         Validators.compose([
-          Validators.required
+          Validators.required,
+          Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}'),
+
         ])
       ),
       Contraseña: new FormControl(
         "",
         Validators.compose([
-          Validators.required
+          Validators.required,
+          Validators.pattern('[0-9]{5,7}')
         ])
       ),
       Confirmar_Contraseña: new FormControl(
         "",
         Validators.compose([
-          Validators.required
+          Validators.required,
+          Validators.pattern('[0-9]{5,7}')
         ])
       ),
 
       name: new FormControl(
         "",
         Validators.compose([
-          Validators.required
+          Validators.required,
+          Validators.pattern('[a-zA-Z]{1,50}'),
+
         ])
       ),
 
       last_name: new FormControl(
         "",
         Validators.compose([
-          Validators.required
+          Validators.required,
+          Validators.pattern('[a-zA-Z]{1,50}')
         ])
       )
     
@@ -57,7 +88,7 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
   goToLogin(){
-    this.navCtrl.navigateBack("/login")
+    this.navCtrl.navigateRoot("/login")
   }
 
   register(registerData: any){
