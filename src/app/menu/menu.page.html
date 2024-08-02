@@ -1,13 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>menu</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+<ion-split-pane>
+  <ion-menu contentId="content" side="end">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>MENU</ion-title>
+        <ion-button (click)="cloasemenu()">
+          <ion-icon name="caret-back-outline"></ion-icon>
+        </ion-button>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-item (click)="logout()">
+        <ion-icon name="log-out-outline" slot="start" color="primary" ></ion-icon>
+        salir
+      </ion-item>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="content" main></ion-router-outlet>
+</ion-split-pane>
