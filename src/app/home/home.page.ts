@@ -1,22 +1,19 @@
-import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import{Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { MusicService } from '../services/music.service';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
+  artists: any;
+  constructor(private musicService: MusicService) {}
 
-  
-
-  constructor(private router: Router) {
-  
+  ngOnInit(){
+    this.artists = this.musicService.getArtistsJson().artists;
+    console.log(this.artists)
   }
 
-  close(){
-    console.log("estoy cerrando la intro")
-    this.router.navigateByUrl("/intro")
-  }
 }
