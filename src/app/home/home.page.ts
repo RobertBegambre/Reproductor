@@ -8,12 +8,16 @@ import { MusicService } from '../services/music.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
-  artists: any;
+  artistsJson: any;
   constructor(private musicService: MusicService) {}
 
   ngOnInit(){
-    this.artists = this.musicService.getArtistsJson().artists;
-    console.log(this.artists)
+    this.artistsJson = this.musicService.getArtistsJson().artists;
+    console.log("Json",this.artistsJson)
+    this.musicService.getArtists().subscribe((data:any)) => {
+      this.artists = Data
+      console.log(this.artists)
+    }
   }
 
 }

@@ -8,14 +8,19 @@ import * as dataArtists from "./artists.json";
 
 export class MusicService {
   urlServer="https://music.fly.dev/artists"
-  httpHeaders={header: new HttpHeaders ({"Content-Type: application/json"})};
+  httpHeaders={header: new HttpHeaders({"Content-Type: application/json"})};
 
   constructor(
-    //private http: HttpClient
+    private http: HttpClient
     ) { }
 
   getArtists(){
     return dataArtists.artists;
 
+  }
+
+  getArtints(
+  ){
+    return this.http.get(`${this.urlServer}/artists`), this.httpHeaders
   }
   }
