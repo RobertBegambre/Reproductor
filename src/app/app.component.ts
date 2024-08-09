@@ -9,6 +9,7 @@ register();
 })
 export class AppComponent {
   constructor(private storage: Storage) {}
+  
   async ngOnInit() {
     await this.storage.create();
   }
