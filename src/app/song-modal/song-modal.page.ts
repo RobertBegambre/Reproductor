@@ -22,7 +22,7 @@ songs: any;
     await this.modalController.dismiss();
   }
 
-  async selecsong (song: any){
+  async selecSong (song: any){
     await this.modalController.dismiss(song);
   }
 }
